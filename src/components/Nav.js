@@ -25,13 +25,13 @@ class Nav extends Component {
             Austin Small Business
           </Typography>
             <Button>
-              <Link to="/">Listings</Link>
+              <Link to="/" style={{ color: "white", textDecoration: "none"}}>Listings</Link>
             </Button>
             <Button>
-              <Link to ='/addlisting'>Add Listing</Link>
+              <Link to ='/addlisting' style={{ color: "white", textDecoration: "none"}}>Add Listing</Link>
             </Button>
             <Button>
-              <Link to ='/' onClick={this.handleLogout}>Logout</Link>
+              <Link to ='/' onClick={this.handleLogout} style={{ color: "white", textDecoration: "none"}}>Logout</Link>
             </Button>
         </Toolbar>
       </AppBar>
@@ -42,10 +42,14 @@ class Nav extends Component {
           Austin Small Business
         </Typography>
           <Button>
-            <Link to="/">Listings</Link>
+            <Link 
+              style={{ color: "white", textDecoration: "none"}} 
+              to="/">
+              Listings
+            </Link>
           </Button>
           <Button>
-            <Link to ='/login'>Login</Link>
+            <Link to ='/login' style={{ color: "white", textDecoration: "none"}}>Login</Link>
           </Button>
       </Toolbar>
       </AppBar>
