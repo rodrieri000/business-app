@@ -21,8 +21,12 @@ class Login extends Component {
   login = (e) => {
     e.preventDefault()
     document.cookie = "loggedIn=true;max-age=60*1000"
+    window.location.replace("/listings")
+    // this.props.login(true)
+    // this.props.user(this.state.username)
+    // this.props.password(this.state.password)
+    // this.props.history.replace('/')
 
-    window.location.replace("/")
   }
 
   render() {

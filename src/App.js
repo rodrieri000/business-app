@@ -1,19 +1,16 @@
 import React from 'react';
-import './App.css'
 import Nav from "./components/Nav"
-// import Listings from "./components/Listings"
-// import Details from "./components/Details"
-// import Login from "./components/Login"
-import AddListing from "./components/AddListing"
+import Router from './Router'
+import { BrowserRouter } from 'react-router-dom'
+
 
 function App() {
   return (
     <div>
+    <BrowserRouter>
       <Nav />
-      {/* <Listings /> */}
-      {/* <Details /> */}
-      {/* <Login /> */}
-      <AddListing />
+      <Router />
+    </BrowserRouter>
     </div>
   );
 }
