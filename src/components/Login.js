@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router'
 import {
   TextField,
   Button,
@@ -21,12 +20,10 @@ class Login extends Component {
   login = (e) => {
     e.preventDefault()
     document.cookie = "loggedIn=true;max-age=60*1000"
-    window.location.replace("/listings")
-    // this.props.login(true)
-    // this.props.user(this.state.username)
-    // this.props.password(this.state.password)
-    // this.props.history.replace('/')
-
+    this.props.login(true)
+    this.props.addUser(this.state.username)
+    this.props.history.replace('/')
+    console.log(this.props.username)
   }
 
   render() {

@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import { AppBar, Button, Toolbar, Typography } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-
 class Nav extends Component {
-
-  state = {
-    loggedIn: this.props.isLoggedIn
-  }
   
   handleLogout = event => {
     this.props.logout(false)
@@ -18,7 +13,7 @@ class Nav extends Component {
 
   render() {
     return (
-      this.state.isLoggedIn ? (
+      this.props.isLoggedIn ? (
         <AppBar position="relative" color="primary">
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: "1" }}>

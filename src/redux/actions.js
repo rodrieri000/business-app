@@ -26,9 +26,9 @@ export const logout = (bool) => {
   }
 }
 
-export const user = (username) => {
+export const addUser = (username) => {
   return {
-    type: 'USER_INFO',
+    type: 'SET_USERNAME',
     value: username
   }
 }
