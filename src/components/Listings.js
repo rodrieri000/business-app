@@ -1,17 +1,15 @@
 import React from 'react'
 import {
-    Button,
     Container,
     Table,
     TableBody,
     TableCell,
     TableHead,
-    TableRow, 
-    Menu, 
-    MenuItem
+    TableRow,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   container: {
@@ -21,7 +19,7 @@ const useStyles = makeStyles({
 
 const Listings = (props) => {
   const classes = useStyles();
-  const [logStatus, setLogStatus] = React.useState(false)
+  const [setLogStatus] = React.useState(false)
 
   const loggedIn = (props) => {
     setLogStatus(!loggedIn)
@@ -36,18 +34,18 @@ const Listings = (props) => {
                         <TableCell>Name</TableCell>
                         <TableCell>Description</TableCell>
                         <TableCell align="right">Hours</TableCell>
-                        <TableCell align="right">Address</TableCell>
+                        <TableCell align="center">Address</TableCell>
                         <TableCell align="right">Delete</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                 {props.listings.map((listing, index) => (
                     <TableRow key={index}>
-                        <TableCell>{listing.name}</TableCell>
+                        <TableCell component={Link} to={`/listing/${listing.id}`} style={{ textDecoration: "none"}}>{listing.name}</TableCell>
                         <TableCell>{listing.description}</TableCell>
-                        <TableCell align="right">{listing.hours}</TableCell>
-                        <TableCell align="right">{listing.address}</TableCell>
-                        <TableCell align="right">
+                        <TableCell>{listing.hours}</TableCell>
+                        <TableCell>{listing.address}</TableCell>
+                        <TableCell>
                             <DeleteIcon
                                 className ="icon text-red"
                                 onClick ={() => props.removeListing(index)}/>
@@ -64,17 +62,17 @@ const Listings = (props) => {
                     <TableRow>
                         <TableCell>Name</TableCell>
                         <TableCell>Description</TableCell>
-                        <TableCell align="right">Hours</TableCell>
-                        <TableCell align="right">Address</TableCell>
+                        <TableCell align="center">Hours</TableCell>
+                        <TableCell align="center">Address</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                 {props.listings.map((listing, index) => (
                     <TableRow key={index}>
-                        <TableCell>{listing.name}</TableCell>
+                        <TableCell component={Link} to={`/listing/${listing.id}`} style={{  textDecoration: "none"}}>{listing.name}</TableCell>
                         <TableCell>{listing.description}</TableCell>
-                        <TableCell align="right">{listing.hours}</TableCell>
-                        <TableCell align="right">{listing.address}</TableCell>
+                        <TableCell>{listing.hours}</TableCell>
+                        <TableCell>{listing.address}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

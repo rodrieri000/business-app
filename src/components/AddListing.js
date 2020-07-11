@@ -1,10 +1,29 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router'
 import {
   TextField,
   Button,
   Container
 } from '@material-ui/core'
+import { Map, TileLayer } from 'react-leaflet'
+import { withStyles } from '@material-ui/core/styles';
+import "../App.css";
+
+const useStyles = theme => ({
+  body: {
+    display: "flex"
+  },
+  container: {
+    paddingTop: 50, 
+    marginLeft: 40,
+    width: 1000
+  }, 
+  map: {
+    marginLeft: 60,
+    marginTop: 50,
+    width: 600,
+    height: 500 
+  }
+});
 
 class AddListing extends Component {
   state = {
@@ -13,6 +32,7 @@ class AddListing extends Component {
     address: '',
     hours: '', 
     description: '',
+    geolocation: []
   }
 
   handleTextChange = (e) => {
@@ -26,16 +46,16 @@ class AddListing extends Component {
     const addedListing = this.state;
     addedListing.id = this.props.listing.length;
     this.props.addListing(addedListing);
-    // this.setState({ isShowing: true });
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="App">
-        <Container maxWidth="lg">
+      <div className={classes.body}>
+        <Container maxWidth="lg" className={classes.container}>
           <form className="login-form" 
             onSubmit={this.handleSubmit}
-            style={{ display: 'flex', flexDirection: 'column', width: '400px', marginTop: 20 }}>
+            style={{ display: 'flex', flexDirection: 'column', width: '500px', marginTop: 20 }}>
             <TextField
               required
               id='name'
@@ -74,9 +94,17 @@ class AddListing extends Component {
               color="primary">Save</Button>
           </form>
         </Container>
+        <Container>
+          <Map className={classes.map} center={[30.267153, -97.743057]} zoom={12}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+            />
+          </Map>
+        </Container>
       </div>
     );
   }
 }
 
-export default AddListing;
+export default withStyles(useStyles)(AddListing)
